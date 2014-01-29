@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name           SteamGifts filter
 // @namespace      http://github.com/Xelio/
-// @version        1.0
+// @version        1.1
 // @description    SteamGifts filter
 // @downloadURL    https://github.com/Xelio/SteamGifts-filter/raw/master/steamgifts-filter.user.js
 // @include        http://www.steamgifts.com/*
@@ -48,38 +48,40 @@ window.sgFilter.addCSS = function() {
   $("<style>")
     .attr("type", "text/css")
     .html("\
-  .sgFilter-hide {\
-  	padding: 1px 0;\
-  }\
-  .sgFilter-hide .left {\
-  	display: none;\
-  }\
-  .sgFilter-hide .center {\
-  	display: none;\
-  }\
-  .sgFilter-hide .right {\
-  	display: none;\
-  }\
-  .sgFilter-hide .sgFilter-unhide-link {\
-  	display: block;\
-  }\
-  .sgFilter-hide-link {\
-    color:#c9cdcf;\
-    padding: 0 5px;\
-  }\
-  .sgFilter-unhide-link {\
-  	display: none;\
-  	font-size: x-small;\
-    color: #999d9f;\
-  }\
-	")
-  .appendTo("head");
+      .sgFilter-hide {\
+        padding: 1px 0;\
+      }\
+      .sgFilter-hide .left {\
+        display: none;\
+      }\
+      .sgFilter-hide .center {\
+        display: none;\
+      }\
+      .sgFilter-hide .right {\
+        display: none;\
+      }\
+      .sgFilter-hide .sgFilter-unhide-link {\
+        display: block;\
+      }\
+      .sgFilter-hide-link {\
+        color: #c9cdcf;\
+        padding: 0 5px;\
+        cursor: pointer;\
+      }\
+      .sgFilter-unhide-link {\
+        display: none;\
+        font-size: x-small;\
+        color: #999d9f;\
+        cursor: pointer;\
+      }\
+    ")
+    .appendTo("head");
 }
 
 window.sgFilter.attachEvents = function() {
   // Add link and run filter after list of game updated
   $('.content').ajaxComplete(function() {
-  	sgFilter.addLinks();
+    sgFilter.addLinks();
     sgFilter.runFilter();
   });
   
